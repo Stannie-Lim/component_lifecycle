@@ -1,3 +1,3 @@
-#### createdb acme_db
-#### npm i
-#### npm run start:dev
+1. createdb acme_db
+2. npm i
+3. npm run start:dev
