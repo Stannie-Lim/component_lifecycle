@@ -51,7 +51,7 @@ app.get('/api/things/:id', async (req, res, next) => {
   res.send(await Thing.findByPk(req.params.id, { include: Category }));
 });
 
-app.get('/api/category/:id', async (req, res, next) => {
+app.get('/api/categories/:id', async (req, res, next) => {
   res.send(await Category.findByPk(req.params.id, { include: Thing }));
 });
 
