@@ -9,6 +9,15 @@
     <div id='root'></div>
     <script type='text/babel'>
 
+      const Thing = (props) => {
+        const thing = props.thing;
+        return (
+          <li>
+            {thing.name}
+          </li>
+        );
+      };
+
       const Category = (props) => {
         const category = props.category;
         return (
@@ -17,9 +26,7 @@
             <ul>
               {category.things.map((thing) => {
                 return (
-                  <li>
-                    {thing.name}
-                  </li>
+                  <Thing thing={thing} />
                 );
               })}
             </ul>
