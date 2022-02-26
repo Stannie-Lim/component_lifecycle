@@ -1,6 +1,7 @@
 1. createdb acme_db
 2. npm i
 3. npm run start:dev
+4. go to localhost:3000
 
 # Endpoints
 - GET `/api/things` shows all the things + the category that it belongs to
