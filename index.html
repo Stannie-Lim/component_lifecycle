@@ -1,84 +1,8 @@
 <html>
   <head>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='/dist/main.js' defer></script>
   </head>
   <body>
     <div id='root'></div>
-    <script type='text/babel'>
-
-      const Thing = (props) => {
-        const thing = props.thing;
-        return (
-          <li>
-            {thing.name}
-          </li>
-        );
-      };
-
-      const Category = (props) => {
-        const category = props.category;
-        return (
-          <li>
-            {category.name}
-            <ul>
-              {category.things.map((thing) => {
-                return (
-                  <Thing thing={thing} />
-                );
-              })}
-            </ul>
-          </li>
-        );
-      };
-
-      class App extends React.Component {
-        constructor() {
-          super();
-          this.state = {
-            things: [],
-            categories: [],
-            loading: true,
-          };
-        }
-
-        async componentDidMount() {
-          // 1. make the axios call to get all the data
-          // data is gonna look like an array of 'things'
-          // two parts of axios:
-            // 1. the method you want to use like "get" or "post" or "put" or "delete"
-            // 2. the endpoint: /api/things
-          const thingsResponse = await axios.get('/api/things');
-          const categoriesResponse = await axios.get('/api/categories');
-
-          // 2. set the state with the things!
-          this.setState({ 
-            things: thingsResponse.data, 
-            categories: categoriesResponse.data,
-            loading: false 
-          });
-        }
-      
-        render() {
-          if (this.state.loading) return <h1>Loading...</h1>
-
-          return (
-            <ul>
-              {this.state.categories.map((category) => {
-                return (
-                  <Category category={category} />
-                );
-              })}
-            </ul>
-          );
-        } 
-      }
-
-      const root = document.querySelector('#root');
-      ReactDOM.render(<App />, root);
-
-    </script>
   </body>
 </html>
